@@ -30,4 +30,27 @@ class Solution:
                 c[i]-=1
                 # print(c)
         return res
+
+#Solution3
+#Two pointers with sorted array assumption
+from collections import Counter
+class Solution:
+    def intersect(self, nums1: List[int], nums2: List[int]) -> List[int]:
+        # Assuming arrays are sorted, then how to optimize
+        nums1.sort()
+        nums2.sort()
+        #optimized solution using 2 pointer approach
+        i, j = 0, 0
+        res = []
+        while i<len(nums1) and j<len(nums2):
+            if nums1[i]>nums2[j]:
+                j+=1
+            elif nums1[i]<nums2[j]:
+                i+=1
+            else:
+                res.append(nums1[i])
+                i+=1
+                j+=1
+        return res
+        
         
